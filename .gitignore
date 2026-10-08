@@ -1,0 +1,33 @@
+# ===== 编译产物 =====
+*.class
+target/
+build/
+out/
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+# ===== IDE =====
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+
+# ===== 日志与临时文件 =====
+*.log
+logs/
+*.tmp
+
+# ===== 系统 =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== 含密码的本地配置，绝不提交 =====
+application-local.yml
+application-dev.yml
+.env
+*.properties.local
