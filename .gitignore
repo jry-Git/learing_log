@@ -30,4 +30,7 @@ desktop.ini
 application-local.yml
 application-dev.yml
 .env
+.env.*
 *.properties.local
+local-secrets.md
+*.local.md
