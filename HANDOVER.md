@@ -43,9 +43,9 @@
 | 阶段 0 · Day 1（10-08）：环境验证 + IDEA Maven 项目 + Git/GitHub 全链路 | ✅ |
 | 阶段 0 · Day 2（10-09）：MySQL 8.0.46 + Workbench 装好并跑通 | ✅ |
 | **阶段 A · Day 1（10-09）：8 种基本类型 / 类型转换 / 运算符** | ✅ |
-| 阶段 A · Day 2（10-10）：流程控制 + 方法重载 | ⬜ **下一个** |
-| 阶段 A · Day 3（10-11）：数组 + 开始刷算法 | ⬜ |
-| 推送 `learning-log` 仓库到 GitHub | ⬜ 待做 |
+| **阶段 A · Day 2（10-10）：流程控制 + 方法重载** | ✅ |
+| 阶段 A · Day 3（10-11）：数组 + **开始刷算法** | ⬜ **下一个** |
+| 推送 `learning-log` 仓库到 GitHub | ✅ `github.com/jry-Git/learing_log`（4 commits，密码文件已确认未被推送） |
 | 注册 LeetCode / 牛客网 | ⬜ 待做 |
 | 装 Redis（WSL2 或 Memurai） | ⬜ 周末 |
 | 装 ApiPost | ⬜ 不急，12 月才用 |
@@ -65,16 +65,27 @@
 - 整数除法 vs 浮点除法（只要有一个操作数是 double，整个表达式按 double 算）
 - `i++` 与 `++i` 的区别
 
-### ⬜ Day 2 要学（10-10）
-- `if` / `switch`（**case 穿透**）
-- `for` / `while` / `do-while`
+### ✅ Day 2 已掌握（10-10）
+- `if` / `else-if` / 嵌套
+- `switch` 与 **case 穿透**（忘写 break 会继续执行下一个 case）
+- `for` / `while` / `do-while`（do-while 至少执行一次）
 - `break` / `continue` / `return` 三者区别
-- 方法的定义、参数、返回值
-- **方法重载**（判断标准：方法名相同 + 参数列表不同，**与返回值无关**）
-- 递归（了解概念）
+- 方法的定义、调用、**重载**
+  → 判断标准：方法名相同 + **参数列表不同**；**与返回值无关**
+  → 已验证：`double add(int,int)` 与 `int add(int,int)` 不算重载，编译报错
+- `Math.random()` 生成指定范围随机数
+- **`i * i <= n` 代替开根号**（判断质数）
+- **`continue` 必须配 `for` 用**（while 里会跳过自增 → 死循环）★踩过坑
+- **static 方法不能直接调非 static 方法** ★踩过坑
+
+### ⬜ Day 3 要学（10-11）
+- 数组：一维 / 二维、声明与初始化、`length`、遍历、`Arrays` 工具类、数组拷贝、可变参数
+- **第一次刷 LeetCode**：704、27、977、209、59
 
 ### ⬛ 完全没开始
 数组、面向对象、集合、并发、JVM、MySQL、Redis、Spring Boot、算法、AI 应用工程
+
+> 注：数组和算法在 Day 3（10-11）开始，所以上面这行到时候要更新。
 
 ### 📁 学习产物的存放约定
 每天一个 `.java` 练习文件，放在 `D:\JAVA\study\src\main\java\`：
@@ -185,52 +196,75 @@ Week01Flow.java        Day 2 流程控制 + 方法重载（待做）
 
 ## 7. 下一步（按优先级）
 
-### 【当前任务】阶段 A · Day 2：流程控制 + 方法重载（10-10）
+### 【当前任务】阶段 A · Day 3：数组 + 第一次刷算法（10-11）
 
 **学什么**（范围卡死，不要越界）
-- `if` / `if-else` / `else-if` / 嵌套
-- `switch`（**case 穿透**、break）
-- `for` / `while` / `do-while`
-- `break` / `continue` / `return` 的区别
-- 方法的定义、参数、返回值、调用
-- **方法重载（overload）** ★面试考点
-- 递归（了解概念即可）
-- ❌ 不学：数组（Day 3）、面向对象（Week 2）
+- 一维数组：声明（`int[] a` / `int a[]`）、初始化（静态 / 动态）、默认值
+- `数组.length` 属性（注意：是属性不是方法，没有括号）
+- 遍历：普通 for + 增强 for（`for-each`）
+- 二维数组：声明、初始化、遍历（`a.length` 是行数，`a[0].length` 是列数）
+- `Arrays` 工具类：`toString` / `sort` / `copyOf` / `equals` / `fill` / `binarySearch`
+- 数组拷贝：浅拷贝 vs 深拷贝、`System.arraycopy`
+- 常见异常：`ArrayIndexOutOfBoundsException`、`NullPointerException`
+- ❌ 不学：`ArrayList`（Week 3 集合才学）、面向对象（Week 2）
 
 **在哪学**
-- 主视频：B 站「**尚硅谷 Java 基础 宋红康**」→ 找「程序流程控制」章节（分支结构 / 循环结构 / break与continue / 方法的定义与重载），2 倍速只看一遍
-- 备选：B 站「黑马程序员 Java 入门」（更短）
-- 速查：菜鸟教程 → Java 条件语句 / Java 循环结构
+- 主视频：B 站「**尚硅谷 Java 基础 宋红康**」→ 找「数组」章节（一维数组 / 二维数组 / Arrays 工具类），2 倍速只看一遍
+- 备选：B 站「黑马程序员 Java 入门」
+- 速查：菜鸟教程 → Java 数组
 
-**敲什么**（新建 `D:\JAVA\study\src\main\java\Week01Flow.java`，6 个练习）
-1. 成绩分级：if-else 链写一遍 + switch 写一遍，并**故意在 case 后不写 break** 观察穿透
-2. 九九乘法表（双重 for，`print` 与 `println` 配合）
-3. 1~100 偶数和：`if` 判断版 + `continue` 版
-4. 猜数字小游戏（`while(true)` + `break` + `Scanner` + `Random`）—— 综合练习
-5. 方法重载：写 3 个同名 `add`，并验证「能否再写 `double add(int,int)`」
-6. `boolean isPrime(int n)` 判断质数，并思考循环条件 `i<n` / `i<=n/2` / `i*i<=n` 的差别
+**敲什么**（新建 `D:\JAVA\study\src\main\java\Week01Array.java`）
+1. 数组基础：声明 5 种写法、打印 `length`、用两种 for 遍历
+2. 求最值 / 求和 / 反转数组（自己写，不要用 `Arrays.sort` 偷懒）
+3. 二维数组：定义一个 3×4 的矩阵，求所有元素之和、求每行最大值
+4. `Arrays` 工具类实操：`sort` / `toString` / `copyOf` / `binarySearch` 各用一遍
+5. **踩坑验证**：写一段会抛 `ArrayIndexOutOfBoundsException` 的代码，看报错长什么样
+6. 数组拷贝对比：`int[] b = a` 和 `Arrays.copyOf(a, a.length)` 改 b 后 a 会不会变？
+
+**第一次刷 LeetCode**（学完数组后，约 40 分钟，5 题）
+| 题号 | 题目 | 考点 |
+|---|---|---|
+| 704 | 二分查找 | 二分边界 |
+| 27 | 移除元素 | 双指针 ★经典 |
+| 977 | 有序数组的平方 | 双指针 |
+| 209 | 长度最小的子数组 | 滑动窗口 ★ |
+| 59 | 螺旋矩阵 II | 模拟，边界控制 |
+
+> **刷题规矩（必须遵守）**
+> 1. 自己想 **15–20 分钟**，没思路才看题解
+> 2. 卡住只看法「**思路**」，**不看的码**
+> 3. **关掉题解自己写**，看懂 ≠ 会写
+> 4. 每题写一句「这题考什么」
+> 5. 错题 **3 天后重做**
+> ⚠️ 直接抄答案 = 白刷，两周后还是写不出来
 
 **验收（关掉资料能答出）**
-1. `switch` 表达式可用哪些类型？（能：byte/short/char/int/String/enum；**不能**：long/float/double/boolean）
-2. 忘记 `break` 会怎样？（case 穿透）
-3. `break` / `continue` / `return` 区别？
-4. `while` 与 `do-while` 区别？（do-while 至少执行一次）
-5. **重载判断标准**？（方法名同 + 参数列表不同；**与返回值无关**）
-6. `i<10` 与 `i<=10` 各循环几次？
+1. `array.length` 是属性还是方法？
+2. 增强 for 循环能拿到下标吗？
+3. 数组默认值是什么（`int[]`、`double[]`、`boolean[]`、`String[]`）？
+4. `int[] b = a;` 之后改 `b[0]`，`a[0]` 会变吗？为什么？
+5. 二分查找的循环条件 `left <= right` 和 `left < right` 有什么区别？
 
-**时间切法（3 小时）**：20 min 复习昨日 → 70 min 视频 → 90 min 敲代码 → 30 min 日志 + 提交
+**时间切法（3 小时）**：20 min 复习 Day 2 → 50 min 视频（数组）→ 50 min 敲数组练习 → 40 min 刷算法 → 20 min 日志 + 提交
 
 **交付**
-- `Week01Flow.java`，提交信息：`feat: Week1 流程控制与方法重载练习`
-- 日志：`D:\learning-log\日志\2026-10-10.md`（照 2026-10-09.md 格式建）
+- `Week01Array.java`，提交信息：`feat: Week1 数组练习 + 算法 5 题`
+- 日志：`D:\learning-log\日志\2026-10-11.md`
 
 ### 【其他待办】
-1. 推送 `learning-log` 到 GitHub（**仍未推送**，本地已有 3 个文件待提交）
-2. 注册 **牛客网**（最重要：面经、真题、校招信息）+ LeetCode
-3. 周末装 Redis：推荐 `wsl --install -d Ubuntu-24.04` 后 `apt install redis-server`；
+1. ~~注册 **牛客网** + **LeetCode**~~ ✅ 已完成（2026-10-09）
+   - **刷题从 Day 3（10-11，学完数组）才开始**——现在刷会撞墙，题里全是数组
+   - 牛客网现在该做的事（10 分钟）：逛「面经」搜「Java 后端 实习」看真实问什么；
+     逛「实习招聘」看岗位要求，提前知道差距
+   - LeetCode 用**中国站 `leetcode.cn`**，先收藏「Hot 100」题单，Day 3 开刷
+   - **两个平台免费题库足够，不要买会员**
+   - 刷题方法：自己想 15–20 分钟 → 看思路（不看代码）→ 关掉自己写 → 错题 3 天后重做
+2. 周末装 Redis：推荐 `wsl --install -d Ubuntu-24.04` 后 `apt install redis-server`；
    备选 Memurai。⚠️ 不要用 `winget install Redis.Redis`（那是 3.0.504，2015 年的版本，太老）
-4. 持续物色「中国大学生服务外包大赛」队友 3–5 人 + 指导老师（见 6.5 节）
-5. 算法从 **Day 3 学完数组**才开始刷，Week 1 目标 5 题（704、27、977、209、59）
+3. 持续物色「中国大学生服务外包大赛」队友 3–5 人 + 指导老师（见 6.5 节）
+4. 算法从 **Day 3 学完数组**才开始刷，Week 1 目标 5 题（704、27、977、209、59）
+5. **IDEA 使用习惯纠正**：不要把 `D:\` 整个盘当项目打开（会索引全盘、极卡）。
+   Java → 打开 `D:\JAVA\study`；日志笔记 → 打开 `D:\learning-log`。每个仓库单独一个窗口。
 
 ## 8. 给新模型的开场提示词（直接复制）
 
