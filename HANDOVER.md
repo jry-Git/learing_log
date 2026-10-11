@@ -1,8 +1,8 @@
 # 交接文档：后端 + AI 应用工程学习计划
 
 > **用途**：换 AI、换模型、换新对话、甚至换电脑时，把这份文件发给对方，它能立刻接上。
-> **最后更新**：2026-10-09（阶段 0 全部完成 + 阶段 A · Day 1 完成，**比计划提前 3 天**）
-> **当前任务**：阶段 A · Day 2 —— 流程控制 + 方法重载（任务清单见第 7 节）
+> **最后更新**：2026-10-11（阶段 0 全部完成 + 阶段 A · Day 1/2 完成 + Day 3 数组主体 + 算法 27/977 已完成，**比计划提前 3 天**）
+> **当前任务**：阶段 A · Day 3 收尾 —— LeetCode 209/59 + 补 for-each（任务清单见第 7 节）
 
 ---
 
@@ -44,8 +44,8 @@
 | 阶段 0 · Day 2（10-09）：MySQL 8.0.46 + Workbench 装好并跑通 | ✅ |
 | **阶段 A · Day 1（10-09）：8 种基本类型 / 类型转换 / 运算符** | ✅ |
 | **阶段 A · Day 2（10-10）：流程控制 + 方法重载** | ✅ |
-| 阶段 A · Day 3（10-11）：数组 + **开始刷算法** | ⬜ **下一个** |
-| 推送 `learning-log` 仓库到 GitHub | ✅ `github.com/jry-Git/learing_log`（4 commits，密码文件已确认未被推送） |
+| 阶段 A · Day 3（10-11）：数组（Arrays/拷贝/越界已练，for-each 待补）+ 算法（27✅ 977✅ 209⬜ 59⬜） | 🔶 **进行中** |
+| 推送 `learning-log` 仓库到 GitHub | ✅ `github.com/jry-Git/learing_log`（已推送；⚠️ 仓库名拼错「learing」少一个 n，能用但建议以后改名） |
 | 注册 LeetCode / 牛客网 | ⬜ 待做 |
 | 装 Redis（WSL2 或 Memurai） | ⬜ 周末 |
 | 装 ApiPost | ⬜ 不急，12 月才用 |
@@ -78,21 +78,35 @@
 - **`continue` 必须配 `for` 用**（while 里会跳过自增 → 死循环）★踩过坑
 - **static 方法不能直接调非 static 方法** ★踩过坑
 
-### ⬜ Day 3 要学（10-11）
-- 数组：一维 / 二维、声明与初始化、`length`、遍历、`Arrays` 工具类、数组拷贝、可变参数
-- **第一次刷 LeetCode**：704、27、977、209、59
+### ✅ Day 3 已掌握（10-11，数组主体）
+- 一维 / 二维数组声明与初始化（静态 `{}` / 动态 `new`）、`length` 属性
+- 数组默认值：`int`=0 / `double`=0.0 / `boolean`=false / 引用类型=`null`
+- 最值 / 求和 / 反转（手动写循环，未偷用 `Arrays.sort`）
+- `Arrays` 工具类：`toString` / `sort` / `copyOf` / `equals` / `fill` / `binarySearch` 各实操一遍
+- **浅拷贝 vs 深拷贝**：`int[] b = a` 改 `b[0]` 会连带改 `a[0]`（引用同一块内存）；
+  `Arrays.copyOf(a, a.length)` 是独立副本，改副本不影响原数组 ★**面试高频**
+- **`ArrayIndexOutOfBoundsException`**：`a` 长度 3 却访问 `a[3]` 直接崩，报错含 `Index 3 out of bounds for length 3`
+- ⚠️ 两个易错理解：`Arrays.equals` 是**顺序敏感**的（不是集合相等）；`binarySearch` **必须先排序**否则结果不确定
+- **LeetCode 27 双指针（移除元素）**：`left` 找 val、`right` 收缩边界、`nums[left]=nums[right]; right--`、返回 `right+1`（原地 O(1)，一遍 O(n)）
+- **LeetCode 977 双指针（有序数组平方）**：利用「已排序 → 平方最大在两端」，**对撞指针**比两端平方、大的放结果末尾（从后往前填），O(n) 优于 sort 的 O(n log n)
+
+### ⬜ Day 3 待补（10-11）
+- **for-each（增强 for）**：还没写，语法与限制见下方说明（待用户补进 `Week01Array.java`，放在越界那行之前）
+- **LeetCode 剩 2 题（明天写）**：209 长度最小的子数组（滑动窗口）、59 螺旋矩阵 II（模拟）；704 是否练待定（今日实刷 27、977，209/59 明天）
+- 可变参数（varargs）—— 原计划列了，本次未单独练，可归入方法重载复习
 
 ### ⬛ 完全没开始
-数组、面向对象、集合、并发、JVM、MySQL、Redis、Spring Boot、算法、AI 应用工程
+面向对象、集合、并发、JVM、MySQL、Redis、Spring Boot、AI 应用工程
 
-> 注：数组和算法在 Day 3（10-11）开始，所以上面这行到时候要更新。
+> 注：数组已在 Day 3（10-11）开工，for-each 补完即算数组通关；算法已开刷（27、977 完成），剩 209、59 待明天。
 
 ### 📁 学习产物的存放约定
 每天一个 `.java` 练习文件，放在 `D:\JAVA\study\src\main\java\`：
 ```
 HelloWorld.java        Day 1 环境验证
 Week01Basic.java       Day 1 基本类型 + 类型转换 + 运算符（已完成）
-Week01Flow.java        Day 2 流程控制 + 方法重载（待做）
+Week01Flow.java        Day 2 流程控制 + 方法重载（已完成）
+Week01Array.java       Day 3 数组（Arrays/拷贝/越界已练，for-each 待补）
 ```
 代码里**必须写中文注释解释「为什么」**，这是他自己复盘和面试能讲清楚的基础。
 日志文件：`D:\learning-log\日志\2026-10-09.md` 这种按日期命名的格式。
@@ -197,6 +211,8 @@ Week01Flow.java        Day 2 流程控制 + 方法重载（待做）
 ## 7. 下一步（按优先级）
 
 ### 【当前任务】阶段 A · Day 3：数组 + 第一次刷算法（10-11）
+
+> **当前状态（2026-10-11）**：数组练习主体已完成（`Week01Array.java` 已含 Arrays 工具类 / 浅深拷贝对比 / 越界异常演示），**仅 `for-each` 待补**；LeetCode 5 题尚未刷。先补 for-each 再开刷。
 
 **学什么**（范围卡死，不要越界）
 - 一维数组：声明（`int[] a` / `int a[]`）、初始化（静态 / 动态）、默认值
